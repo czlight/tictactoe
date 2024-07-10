@@ -22,14 +22,18 @@ def player(board):
     """
     Returns player who has the next turn on a board.
     """
-    
+    print("board is:", board)
     for row in board:
         for item in row:
             if item == 'X':
-                xCount = 1
+                xCount += 1
+                print(xCount)
             if item == 'O':
                 oCount += 1
-    if xCount == oCount
+    if xCount == oCount:
+        return "X"
+    else:
+        return "O"
 
     raise NotImplementedError
 
