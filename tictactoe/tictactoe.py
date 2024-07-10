@@ -27,14 +27,15 @@ def player(board):
     oCount = 0
 
     print("board is:", board)
+    # iterate over every row()
     for row in board:
         for item in row:
             if item == 'X':
                 xCount += 1
                 print("number of Xs is: ", xCount)
             if item == 'O':
-                print("number of Os is: ", oCount)
                 oCount += 1
+                print("number of Os is: ", oCount)
     if xCount == oCount:
         print("X's turn!")
         return "X"
