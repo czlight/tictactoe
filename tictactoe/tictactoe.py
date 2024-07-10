@@ -13,7 +13,7 @@ def initial_state():
     """
     Returns starting state of the board.
     """
-    return [[X, EMPTY, EMPTY],
+    return [[X, O, EMPTY],
             [EMPTY, EMPTY, EMPTY],
             [EMPTY, EMPTY, EMPTY]]
 
