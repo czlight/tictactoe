@@ -14,9 +14,9 @@ def initial_state():
     Returns starting state of the board.
     the board is represented as a list of lists
     """
-    return [[X, O, EMPTY],
+    return [[EMPTY, EMPTY, EMPTY],
             [EMPTY, EMPTY, EMPTY],
-            [X, X, O]]
+            [EMPTY, EMPTY, EMPTY]]
 
 
 def player(board):
