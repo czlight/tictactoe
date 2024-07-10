@@ -13,7 +13,7 @@ def initial_state():
     """
     Returns starting state of the board.
     """
-    return [[EMPTY, EMPTY, EMPTY],
+    return [[X, EMPTY, EMPTY],
             [EMPTY, EMPTY, EMPTY],
             [EMPTY, EMPTY, EMPTY]]
 
@@ -22,17 +22,24 @@ def player(board):
     """
     Returns player who has the next turn on a board.
     """
+    # initialize X and O count to 0
+    xCount = 0
+    oCount = 0
+
     print("board is:", board)
     for row in board:
         for item in row:
             if item == 'X':
                 xCount += 1
-                print(xCount)
+                print("number of Xs is: ", xCount)
             if item == 'O':
+                print("number of Os is: ", oCount)
                 oCount += 1
     if xCount == oCount:
+        print("X's turn!")
         return "X"
     else:
+        print("O's turn!")
         return "O"
 
     raise NotImplementedError

@@ -1,4 +1,4 @@
-import tictactoe
+from tictactoe import *
 
 board = initial_state()
 
