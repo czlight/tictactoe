@@ -12,6 +12,7 @@ EMPTY = None
 def initial_state():
     """
     Returns starting state of the board.
+    the board is represented as a list of lists
     """
     return [[X, O, EMPTY],
             [EMPTY, EMPTY, EMPTY],
@@ -26,26 +27,21 @@ def player(board):
     xCount = 0
     oCount = 0
 
-    print("board is:", board)
     # iterate over every row (i.e., list) of the game board
     for row in board:
         # iterate over every item in row (i.e., X, O, or EMPTY)
+        # and keep track of how many Xs and Os are on the game board
         for item in row:
             if item == 'X':
                 xCount += 1
             if item == 'O':
                 oCount += 1
 
-    print("number of Xs is: ", xCount)
-    print("number of Os is: ", oCount)
+    # if amount of X and O are equal, it is X's turn. Otherwise, it is O's turn
     if xCount == oCount:
-        print("X's turn!")
         return "X"
     else:
-        print("O's turn!")
         return "O"
-
-    raise NotImplementedError
 
 
 def actions(board):
