@@ -15,7 +15,7 @@ def initial_state():
     """
     return [[X, O, EMPTY],
             [EMPTY, EMPTY, EMPTY],
-            [EMPTY, X, EMPTY]]
+            [EMPTY, X, O]]
 
 
 def player(board):
