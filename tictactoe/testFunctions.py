@@ -1,5 +1,8 @@
 from tictactoe import *
 
+
+# create an empty board
 board = initial_state()
 
-player(board)
+# test the player() function with an empty board
+print(player(board))
