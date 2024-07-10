@@ -22,6 +22,7 @@ def initial_state():
 def player(board):
     """
     Returns player who has the next turn on a board.
+    X always moves first (i.e., when board is in initial state)
     """
     # initialize X and O count to 0
     xCount = 0
