@@ -15,7 +15,7 @@ def initial_state():
     """
     return [[X, O, EMPTY],
             [EMPTY, EMPTY, EMPTY],
-            [EMPTY, EMPTY, EMPTY]]
+            [EMPTY, X, EMPTY]]
 
 
 def player(board):
@@ -27,15 +27,17 @@ def player(board):
     oCount = 0
 
     print("board is:", board)
-    # iterate over every row()
+    # iterate over every row (i.e., list) of the game board
     for row in board:
+        # iterate over every item in row (i.e., X, O, or EMPTY)
         for item in row:
             if item == 'X':
                 xCount += 1
-                print("number of Xs is: ", xCount)
             if item == 'O':
                 oCount += 1
-                print("number of Os is: ", oCount)
+
+    print("number of Xs is: ", xCount)
+    print("number of Os is: ", oCount)
     if xCount == oCount:
         print("X's turn!")
         return "X"
