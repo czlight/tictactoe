@@ -64,6 +64,7 @@ def actions(board):
                 setOfMoves.add(possibleMove)
             j += 1
         i += 1
+    return setOfMoves
     # print(setOfMoves)
 
 
