@@ -15,9 +15,9 @@ def initial_state():
     Returns starting state of the board.
     the board is represented as a list of lists
     """
-    return [[X, X, X],
-            [X, X, O],
-            [X, EMPTY, X]]
+    return [[EMPTY, EMPTY, EMPTY],
+            [EMPTY, EMPTY, EMPTY],
+            [EMPTY, EMPTY, EMPTY]]
 
 
 def player(board):
@@ -102,7 +102,8 @@ def determine_value(list):
 
 def winner(board):
     """
-    Returns the winner of the game, if there is one.
+    Returns the winner of the game, or None if there's no winner (i.e., tie game
+    or game is in progress)
     """
     # determine if there's a horizontal winner
     for row in board:
@@ -141,7 +142,11 @@ def terminal(board):
     """
     Returns True if game is over, False otherwise.
     """
-    raise NotImplementedError
+    # there's a winner if X or O wins or if the actions() indicates there are no possible moves
+    if winner(board) == X or winner(board) == O or len(actions(board)) == 0:
+        return True
+    else:
+        return False
 
 
 def utility(board):
