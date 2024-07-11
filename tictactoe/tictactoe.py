@@ -15,9 +15,9 @@ def initial_state():
     Returns starting state of the board.
     the board is represented as a list of lists
     """
-    return [[EMPTY, EMPTY, EMPTY],
-            [EMPTY, EMPTY, EMPTY],
-            [EMPTY, EMPTY, EMPTY]]
+    return [[X, X, X],
+            [X, X, O],
+            [X, EMPTY, X]]
 
 
 def player(board):
@@ -86,12 +86,55 @@ def result(board, action):
 
     return new_board
 
+def equal(list):
+    # transform the row into a set; if it's length is 1, all elements were the same
+    if len(set(list)) == 1 and list[0] != None:
+        return True
+
+
+def determine_value(list):
+    if list[0] == X:
+        return X
+    else:
+        return O
+
+
 
 def winner(board):
     """
     Returns the winner of the game, if there is one.
     """
-    raise NotImplementedError
+    # determine if there's a horizontal winner
+    for row in board:
+        if equal(row):
+            return determine_value(row)
+
+    # create a list for each column
+    columns = [[board[j][i] for j in range(len(board))] for i in range(len(board[0]))]
+
+    #create list for for potential diagonal winner (i.e., 0,0; 1,1; 2,2)
+    diagonal1 = []
+    diagonal2 = []
+    for i in range(3):
+        diagonal1.append(board[i][i])
+
+    for i in range(3):
+        diagonal2.append(board[i][2 - i])
+
+    # check if there's a diagonal winner
+    if equal(diagonal1):
+        return determine_value(diagonal1)
+
+    if equal(diagonal2):
+        return determine_value(diagonal2)
+
+    # check if each element in column is the same
+    for column in columns:
+        if equal(column):
+            return determine_value(column)
+
+    # no winner (i.e., game in progress or tie)
+    return None
 
 
 def terminal(board):
