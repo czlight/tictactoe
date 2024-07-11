@@ -1,3 +1,7 @@
+"""
+This file is used to test functions
+created in tictactoe.py file
+"""
 from tictactoe import *
 
 
@@ -9,4 +13,6 @@ board = initial_state()
 
 action = (0, 0)
 
-result(board, action)
+#result(board, action)
+
+winner(board)
