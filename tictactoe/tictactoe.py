@@ -49,7 +49,22 @@ def actions(board):
     """
     Returns set of all possible actions (i, j) available on the board.
     """
-    raise NotImplementedError
+    i = 0 # row
+    j = 0 # cell
+    setOfMoves = set()
+    # iterate over every row (i.e., list) of the game board
+    for row in board:
+        # iterate over every item in row (i.e., X, O, or EMPTY)
+        # and create a tuple of every where an EMPTY space is
+        j = 0 # reset j (i.e. cell is zero during every new row)
+        for cell in row:
+            if cell == None: # found a potential move
+                possibleMove = (i, j)
+                # print("possible Move", possibleMove)
+                setOfMoves.add(possibleMove)
+            j += 1
+        i += 1
+    # print(setOfMoves)
 
 
 def result(board, action):

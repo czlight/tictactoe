@@ -5,4 +5,4 @@ from tictactoe import *
 board = initial_state()
 
 # test the player() function with an empty board
-print(player(board))
+actions(board)
