@@ -50,16 +50,16 @@ def actions(board):
     """
     Returns set of all possible actions (i, j) available on the board.
     """
-    i = 0 # row
-    j = 0 # cell
+    i = 0  # row
+    j = 0  # cell
     setOfMoves = set()
     # iterate over every row (i.e., list) of the game board
     for row in board:
         # iterate over every item in row (i.e., X, O, or EMPTY)
         # and create a tuple of every where an EMPTY space is
-        j = 0 # reset j (i.e. cell is zero during every new row)
+        j = 0  # reset j (i.e. cell is zero during every new row)
         for cell in row:
-            if cell == None: # found a potential move
+            if cell == None:  # found a potential move
                 possibleMove = (i, j)
                 # print("possible Move", possibleMove)
                 setOfMoves.add(possibleMove)
@@ -86,6 +86,7 @@ def result(board, action):
 
     return new_board
 
+
 def equal(list):
     # transform the row into a set; if it's length is 1, all elements were the same
     if len(set(list)) == 1 and list[0] != None:
@@ -97,7 +98,6 @@ def determine_value(list):
         return X
     else:
         return O
-
 
 
 def winner(board):
@@ -113,7 +113,7 @@ def winner(board):
     # create a list for each column
     columns = [[board[j][i] for j in range(len(board))] for i in range(len(board[0]))]
 
-    #create list for for potential diagonal winner (i.e., 0,0; 1,1; 2,2)
+    # create list for for potential diagonal winner (i.e., 0,0; 1,1; 2,2)
     diagonal1 = []
     diagonal2 = []
     for i in range(3):
@@ -153,7 +153,14 @@ def utility(board):
     """
     Returns 1 if X has won the game, -1 if O has won, 0 otherwise.
     """
-    raise NotImplementedError
+    if winner(board) == X:
+        return 1
+
+    if winner(board) == O:
+        return -1
+
+    if winner(board) == None:
+        return 0
 
 
 def minimax(board):
