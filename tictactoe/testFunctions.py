@@ -8,11 +8,13 @@ from tictactoe import *
 # create an empty board
 board = initial_state()
 
+print(actions(board))
+
 # test the player() function with an empty board
 # print(actions(board))
 
-action = (0, 0)
+#action = (0, 0)
 
 #result(board, action)
 
-winner(board)
+#winner(board)
