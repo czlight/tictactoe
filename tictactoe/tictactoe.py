@@ -163,8 +163,73 @@ def utility(board):
         return 0
 
 
+def find_max_value(board):
+    """
+    returns action that gives the optimal move (i.e. max value)
+    and utility in a given state
+    """
+    print("calling find_max_value......!")
+    # if we're in a terminal state, return the utility of the board
+    if terminal(board) == True:
+        return utility(board), None
+
+    # keep track of value of state, initialize to negative infinity
+    # I'm always going to try and do better than that
+    max_value = float("-inf")
+    max_action = None
+
+    # go through all possible actions and find out the max score, given what my opponent is trying to do
+    for action in actions(board):
+        min_value, min_action = find_min_value(result(board, action))
+
+        if min_value > max_value:
+            max_value = min_value
+            max_action = action
+
+    return max_value, max_action
+
+
+def find_min_value(board):
+    """
+    returns the optimal action (i.e., minimum value)
+    and utility for a given state
+
+    """
+
+    if terminal(board) == True:
+        return utility(board), None
+
+    min_value = float("inf")
+    min_action = None
+
+    # go through all available actions and determine the min score, given what opponent is trying to do
+    for action in actions(board):
+
+        max_value, max_action = find_max_value(result(board, action))
+
+        print("value (from find_max_value):", max_value)
+        if max_value < min_value:
+            min_value = max_value
+            min_action = action
+
+    return min_value, min_action
+
+
 def minimax(board):
     """
     Returns the optimal action for the current player on the board.
     """
-    raise NotImplementedError
+
+    # return None if board is in a Terminal state
+    if terminal(board) == True:
+        return None
+
+    current_player = player(board)
+
+    if current_player == "X":
+        value, action = find_max_value(board)
+
+    if current_player == "O":
+        value, action = find_min_value(board)
+
+    return action

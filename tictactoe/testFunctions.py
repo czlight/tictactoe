@@ -18,3 +18,5 @@ print(actions(board))
 #result(board, action)
 
 #winner(board)
+
+minimax(board)
