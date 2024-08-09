@@ -13,14 +13,17 @@ white = (255, 255, 255)
 
 screen = pygame.display.set_mode(size)
 
+# set font sizes
 mediumFont = pygame.font.Font("OpenSans-Regular.ttf", 28)
 largeFont = pygame.font.Font("OpenSans-Regular.ttf", 40)
 moveFont = pygame.font.Font("OpenSans-Regular.ttf", 60)
 
+# initial state
 user = None
 board = ttt.initial_state()
 ai_turn = False
 
+# game loop
 while True:
 
     for event in pygame.event.get():
@@ -127,6 +130,7 @@ while True:
                     if (board[i][j] == ttt.EMPTY and tiles[i][j].collidepoint(mouse)):
                         board = ttt.result(board, (i, j))
 
+        # if game is over loop
         if game_over:
             againButton = pygame.Rect(width / 3, height - 65, width / 3, 50)
             again = mediumFont.render("Play Again", True, black)
